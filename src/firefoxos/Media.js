@@ -25,7 +25,6 @@ var cordova = require('cordova'),
 module.exports = {
 
     create: function (win, fail, args) {
-        console.log('win: ', win, fail, args);
         if (!args.length) {
             return {"status" : 9, "message" : "Media Object id was not sent in arguments"};
         }
@@ -165,7 +164,6 @@ module.exports = {
             try {
                 audio.currentTime = args[1];
             } catch (e) {
-                console.log('Error seeking audio: ' + e);
                 return {"status" : 3, "message" : "Error seeking audio: " + e};
             }
 
@@ -249,3 +247,5 @@ module.exports = {
     }
 
 };
+
+require('cordova/firefoxos/commandProxy').add('Media', module.exports);
